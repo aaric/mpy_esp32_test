@@ -1,14 +1,20 @@
+from asyncio import sleep_ms
+
 from machine import Pin
 from utime import sleep
 
-pin = Pin("LED", Pin.OUT)
+LED_PIN = 14
+
+led = Pin(LED_PIN, Pin.OUT)
 
 print("LED starts flashing...")
+
 while True:
     try:
-        pin.toggle()
-        sleep(1) # sleep 1sec
+        led.toggle()
+        sleep(1)
     except KeyboardInterrupt:
         break
-pin.off()
+
+led.off()
 print("Finished.")
