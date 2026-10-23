@@ -1,5 +1,3 @@
-from asyncio import sleep_ms
-
 from machine import Pin
 from utime import sleep
 
