@@ -1,5 +1,5 @@
 from machine import Pin
-from utime import sleep
+from time import sleep_ms
 
 LED_PIN = 14
 BTN_PIN = 21
@@ -11,7 +11,8 @@ print("Button waiting to be triggered...")
 
 while True:
     led.toggle()
-    print(btn.value())
-    sleep(1)
+    btn_state = btn.value()
+    print(btn_state)
+    sleep_ms(20)
 
 print("Finished.")

@@ -1,5 +1,5 @@
 from machine import Pin
-from utime import sleep
+from time import sleep
 
 LED_PIN = 14
 

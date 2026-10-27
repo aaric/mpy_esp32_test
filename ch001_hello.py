@@ -13,4 +13,5 @@ while True:
     print(f"Hello World! {count}")
     count += 1
     # 延时 1 秒
-    time.sleep(1)
+    # time.sleep(1)
+    time.sleep_ms(1000)
