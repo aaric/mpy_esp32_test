@@ -10,9 +10,14 @@ btn = Pin(BTN_PIN, Pin.IN, Pin.PULL_UP)
 print("Button waiting to be triggered...")
 
 while True:
+    # LED 状态取反
     led.toggle()
+
+    # 读取按键状态
     btn_state = btn.value()
     print(btn_state)
-    sleep_ms(20)
+
+    # 延时 100 毫秒防抖
+    sleep_ms(100)
 
 print("Finished.")
