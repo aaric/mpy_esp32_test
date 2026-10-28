@@ -2,9 +2,9 @@ from machine import Pin
 import neopixel
 import time
 
+# ESP32-S3-DevKitC-1 板载 RGB LED 连接 GPIO48
 LED_PIN = 48
 
-# ESP32-S3-DevKitC-1 板载 RGB LED 连接 GPIO48
 # 参数：引脚对象，灯珠数量（板载只有1颗）
 np = neopixel.NeoPixel(Pin(LED_PIN), 1)
 
