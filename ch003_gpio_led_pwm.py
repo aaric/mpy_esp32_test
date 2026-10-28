@@ -9,10 +9,10 @@ led_pwm = PWM(Pin(LED_PIN), freq=5000, duty_u16=0)
 # led_pwm.freq(10)
 
 # 设置占空比，范围是 0 到 65535
-# led_pwm.duty_u16(10000)
+# led_pwm.duty_u16(65536 * 3 // 4)  # type: ignore
 
 # 设置亮度，范围是 0 到 1023
-# led_pwm.duty(512) # type: ignore
+# led_pwm.duty(1024 * 3 // 4) # type: ignore
 
 while True:
     try:
