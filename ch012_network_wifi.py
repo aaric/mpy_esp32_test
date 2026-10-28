@@ -17,12 +17,12 @@ wlan.active(True)
 wlan.scan()
 
 if not wlan.isconnected():
-    wlan.connect("your-wifi-ssid", "password")
-    print(wlan.config("mac"))
-    print(wlan.ipconfig("addr4"))
+    wlan.connect("your-wifi-ssid", "your-password")
 
 while not wlan.isconnected():
     print("正在连接Wi-Fi...")
     time.sleep(1)
 
 print("Wi-Fi连接成功！")
+print("MAC: ", ":".join("{:02x}".format(b) for b in wlan.config("mac")))
+print("IP: ", wlan.ipconfig("addr4")[0], "Subnet: ", wlan.ipconfig("addr4")[1], "Gateway: ", wlan.ipconfig("gw4"))
