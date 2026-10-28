@@ -18,6 +18,7 @@ print("Wi-Fi连接成功！")
 print("MAC: ", ":".join("{:02x}".format(b) for b in wlan.config("mac")))
 print("IP: ", wlan.ipconfig("addr4")[0], "Subnet: ", wlan.ipconfig("addr4")[1], "Gateway: ", wlan.ipconfig("gw4"))
 
+
 # 请求网络数据
 try:
     response = requests.get("https://acs.m.taobao.com/gw/mtop.common.getTimestamp")
