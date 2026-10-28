@@ -9,6 +9,7 @@ btn = Pin(BTN_PIN, Pin.IN, Pin.PULL_UP)
 # def irq_btn_click(pin):
     # print("irq object: ", pin)
 
+
 # 示例2
 flag = 0
 

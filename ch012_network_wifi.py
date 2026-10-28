@@ -10,6 +10,7 @@ import time
 #
 # print("AP模式已启动，等待客户端连接...")
 
+
 # 工作模式STA
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)

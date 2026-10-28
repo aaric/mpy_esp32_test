@@ -14,6 +14,8 @@ led_pwm = PWM(Pin(LED_PIN), freq=5000, duty_u16=0)
 # 设置亮度，范围是 0 到 1023
 # led_pwm.duty(1024 * 3 // 4) # type: ignore
 
+
+# 示例
 while True:
     try:
         # 亮度逐渐增加 (渐亮)
