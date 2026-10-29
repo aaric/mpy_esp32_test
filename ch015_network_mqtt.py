@@ -25,7 +25,7 @@ ssl_content = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 # ssl_content.load_cert_chain("client-cert.pem", "client-key.pem")
 ssl_content.verify_mode = ssl.CERT_NONE
 client_id = "esp32-01"
-client = MQTTClient(client_id, "10.0.11.208", 8883, "admin", "public", ssl=ssl_content)
+client = MQTTClient(client_id, "127.0.0.1", 8883, "admin", "public", ssl=ssl_content)
 
 my_sub_topic = f"esp32/topic/{client_id}"
 my_pub_topic = f"esp32/topic/host"
