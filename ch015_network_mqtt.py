@@ -38,7 +38,7 @@ client.set_callback(on_message)
 
 try:
     client.connect()
-    print("MQTT连接成功！")
+    print("MQTT服务器连接成功！")
 
     client.subscribe(my_sub_topic)
     print("已订阅主题：", my_sub_topic)
@@ -48,10 +48,12 @@ try:
 except Exception as e:
     print("连接MQTT过程中发生错误：", e)
 
+
+# 进入主循环，处理业务逻辑
 while True:
     try:
         # 检查MQTT新消息
         client.check_msg()
         time.sleep(1)
     except Exception as e:
-        print("检查消息过程中发生错误：", e)
+        print("主循环发生错误：", e)
