@@ -28,7 +28,10 @@ while True:
             led_pwm.duty_u16(duty)
             time.sleep_ms(10)
     except KeyboardInterrupt:
-        led_pwm.deinit()  # 停止 PWM
+        print("程序被用户中断，退出循环。")
         break
+
+# 停止 PWM
+led_pwm.deinit()
 
 print("Finished.")

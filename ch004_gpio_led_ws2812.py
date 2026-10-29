@@ -9,22 +9,28 @@ LED_PIN = 48
 np = neopixel.NeoPixel(Pin(LED_PIN), 1)
 
 while True:
-    # 红色亮
-    np[0] = (255, 0, 0)
-    np.write()
-    time.sleep(1)
+    try:
+        # 红色亮
+        np[0] = (255, 0, 0)
+        np.write()
+        time.sleep(1)
 
-    # 绿色亮
-    np[0] = (0, 255, 0)
-    np.write()
-    time.sleep(1)
+        # 绿色亮
+        np[0] = (0, 255, 0)
+        np.write()
+        time.sleep(1)
 
-    # 蓝色亮
-    np[0] = (0, 0, 255)
-    np.write()
-    time.sleep(1)
+        # 蓝色亮
+        np[0] = (0, 0, 255)
+        np.write()
+        time.sleep(1)
+    except KeyboardInterrupt:
+        print("程序被用户中断，退出循环。")
+        break
 
-    # 关闭LED
-    np[0] = (0, 0, 0)
-    np.write()
-    time.sleep(1)
+# 关闭LED
+np[0] = (0, 0, 0)
+np.write()
+time.sleep(1)
+
+print("Finished.")

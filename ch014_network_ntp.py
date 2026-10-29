@@ -39,6 +39,5 @@ try:
 
     # 打印RTC时间
     print("RTC时间：", rtc.datetime())
-
 except Exception as e:
     print("同步NTP时间过程中发生错误：", e)

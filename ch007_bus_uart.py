@@ -12,14 +12,20 @@ def iqr_uart_receive(uart):
 uart1.irq(handler=iqr_uart_receive, trigger=UART.IRQ_RXIDLE, hard=False) # type: ignore
 
 while True:
-    # 发送数据
-    uart1.write("hello, world\n")
+    try:
+        # 发送数据
+        uart1.write("hello, world\n")
 
-    # 检查是否有数据可读
-    # while uart1.any():
-    #     # 读取数据
-    #     data = uart1.read()
-    #     print("Received:", data)
+        # 检查是否有数据可读
+        # while uart1.any():
+        #     # 读取数据
+        #     data = uart1.read()
+        #     print("Received:", data)
 
-    # 延时 1s
-    time.sleep(1)
+        # 延时 1s
+        time.sleep(1)
+    except KeyboardInterrupt:
+        print("程序被用户中断，退出循环。")
+        break
+
+print("Finished.")
