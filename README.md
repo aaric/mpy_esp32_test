@@ -4,5 +4,6 @@
 
 ```bash
 import mip
-mip.install("umqtt.simple")
+# mip.install("umqtt.simple")
+mip.install("umqtt.robust")
 ```

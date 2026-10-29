@@ -1,7 +1,7 @@
 import network
 import time
 import ssl
-from umqtt.simple import MQTTClient # type: ignore
+from umqtt.robust import MQTTClient # type: ignore
 
 # 工作模式STA
 wlan = network.WLAN(network.STA_IF)
@@ -9,8 +9,7 @@ wlan.active(True)
 wlan.scan()
 
 if not wlan.isconnected():
-    # wlan.connect("your-wifi-ssid", "your-password")
-    wlan.connect("BlueAzure-DEVICE", "Blue@2025@Azure")
+    wlan.connect("your-wifi-ssid", "your-password")
 
 while not wlan.isconnected():
     print("正在连接Wi-Fi...")
@@ -26,11 +25,33 @@ ssl_content = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 # ssl_content.load_cert_chain("client-cert.pem", "client-key.pem")
 ssl_content.verify_mode = ssl.CERT_NONE
 client_id = "esp32-01"
-client = MQTTClient(client_id, "10.0.11.208", 8883, "admin", "Blue2026", ssl=ssl_content)
+client = MQTTClient(client_id, "10.0.11.208", 8883, "admin", "public", ssl=ssl_content)
+
+my_sub_topic = f"esp32/topic/{client_id}"
+my_pub_topic = f"esp32/topic/host"
+
+def on_message(topic, msg):
+    print(f"收到消息[{topic.decode()}]：", msg.decode())
+    client.publish(my_pub_topic, f"{client_id} Received: {msg.decode()}")
+
+client.set_callback(on_message)
 
 try:
-    # 连接服务器
     client.connect()
-    print("EMQX连接成功！")
+    print("MQTT连接成功！")
+
+    client.subscribe(my_sub_topic)
+    print("已订阅主题：", my_sub_topic)
+
+    my_msg = f"Hello from {client_id}!"
+    client.publish(my_pub_topic, my_msg)
 except Exception as e:
-    print("连接EMQX过程中发生错误：", e)
+    print("连接MQTT过程中发生错误：", e)
+
+while True:
+    try:
+        # 检查MQTT新消息
+        client.check_msg()
+        time.sleep(1)
+    except Exception as e:
+        print("检查消息过程中发生错误：", e)
